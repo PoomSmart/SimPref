@@ -1,0 +1,10 @@
+{
+	entry = {
+		bundle = "SimPref";
+		cell = PSLinkCell;
+		detail = "SimPrefController";
+		icon = "SimPref.png";
+		isController = 1;
+		label = "SimPref";
+	};
+}
