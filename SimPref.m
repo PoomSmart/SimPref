@@ -1,5 +1,6 @@
 #import <Preferences/PSListController.h>
 #import <Preferences/PSSpecifier.h>
+#import <HBLog.h>
 
 @interface SimPrefController : PSListController
 @end
@@ -8,14 +9,14 @@
 
 - (id)specifiers {
     if (_specifiers == nil) {
-        _specifiers = [[self loadSpecifiersFromPlistName:@"SimPref" target:self] retain];
+        _specifiers = [self loadSpecifiersFromPlistName:@"SimPref" target:self];
     }
     return _specifiers;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *rightButton = [[[UIBarButtonItem alloc] initWithTitle:@"Button" style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonPressed)] autorelease];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Button" style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonPressed)];
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 

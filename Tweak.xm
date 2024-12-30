@@ -1,3 +1,6 @@
+#import <CoreFoundation/CoreFoundation.h>
+#import <Foundation/Foundation.h>
+#import <HBLog.h>
 #import "Pref.h"
 
 NSString *const domain = @"com.PS.simpreftweak";

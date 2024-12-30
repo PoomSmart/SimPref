@@ -1,7 +1,7 @@
 TARGET = simulator:clang:latest
 
 include $(THEOS)/makefiles/common.mk
-include ../preferenceloader/locatesim.mk
+include ../preferenceloader-sim/locatesim.mk
 
 TWEAK_NAME = SimPrefTweak
 SimPrefTweak_FILES = Tweak.xm
@@ -11,6 +11,7 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 BUNDLE_NAME = SimPref
 SimPref_FILES = SimPref.m
 SimPref_INSTALL_PATH = /Library/PreferenceBundles
+SimPref_CFLAGS = -fobjc-arc
 SimPref_PRIVATE_FRAMEWORKS = Preferences
 SimPref_FRAMEWORKS = CoreGraphics UIKit
 
