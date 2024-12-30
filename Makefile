@@ -1,4 +1,6 @@
 TARGET = simulator:clang:latest
+ARCHS = arm64
+# ARCHS = x86_64 i386 # for Intel Mac
 
 include $(THEOS)/makefiles/common.mk
 include ../preferenceloader-sim/locatesim.mk
