@@ -1,4 +1,4 @@
-TARGET = simulator:clang:latest
+TARGET = simulator:clang:17.2:15.0
 ARCHS = arm64
 # ARCHS = x86_64 i386 # for Intel Mac
 
@@ -19,12 +19,13 @@ SimPref_FRAMEWORKS = CoreGraphics UIKit
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
-setup:: all
+setup:: clean all
+	@rm -f /opt/simject/$(TWEAK_NAME).dylib
 	@cp -v $(THEOS_OBJ_DIR)/$(TWEAK_NAME).dylib /opt/simject
 	@cp -v $(PWD)/$(TWEAK_NAME).plist /opt/simject
-	@sudo cp -v $(PWD)/entry.plist $(PL_SIMULATOR_PLISTS_PATH)/$(BUNDLE_NAME).plist
-	@sudo cp -vR $(THEOS_OBJ_DIR)/$(BUNDLE_NAME).bundle $(PL_SIMULATOR_BUNDLES_PATH)/
+	@sudo cp -v $(PWD)/entry.plist "$(PL_SIMULATOR_PLISTS_PATH)/$(BUNDLE_NAME).plist"
+	@sudo cp -vR $(THEOS_OBJ_DIR)/$(BUNDLE_NAME).bundle "$(PL_SIMULATOR_BUNDLES_PATH)/"
 
 remove::
 	@rm -f /opt/simject/$(TWEAK_NAME).dylib /opt/simject/$(TWEAK_NAME).plist
-	@[ ! -d $(PL_SIMULATOR_BUNDLES_PATH)/$(BUNDLE_NAME).bundle ] || sudo rm -rf $(PL_SIMULATOR_BUNDLES_PATH)/$(BUNDLE_NAME).bundle
+	@[ ! -d "$(PL_SIMULATOR_BUNDLES_PATH)/$(BUNDLE_NAME).bundle" ] || sudo rm -rf "$(PL_SIMULATOR_BUNDLES_PATH)/$(BUNDLE_NAME).bundle"
